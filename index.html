@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arden Kencana · portfolio modern</title>
+    <!-- Google Fonts & Font Awesome for clean modern typography/icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;   /* very light frost */
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* modern glass / blur elements */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* header / nav */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            padding: 1.2rem 0;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e293b, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e293b;
+            font-size: 1rem;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+        }
+
+        .btn-outline {
+            border: 1.5px solid #1e293b;
+            background: transparent;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            color: #1e293b;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: #1e293b;
+            color: white;
+            border-color: #1e293b;
+        }
+
+        /* main spacing */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 4rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, #1e293b, #2563eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #334155;
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 0.9rem 2.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 20px -8px rgba(15, 23, 42, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #1e293b;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            background: linear-gradient(145deg, #d9e2ef, #b0c6da);
+            border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+            width: 100%;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.16);
+        }
+
+        .hero-image i {
+            font-size: 12rem;
+            color: #1e293b;
+            opacity: 0.8;
+        }
+
+        /* clients / social proof */
+        .clients {
+            padding: 2rem 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            background: white;
+        }
+
+        .client-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .client-item {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #64748b;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        .client-item:hover { opacity: 1; color: #0f172a; }
+
+        /* section headers */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-sub {
+            color: #3b82f6;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+        }
+
+        /* featured work cards */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.05);
+            transition: 0.25s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .work-card:hover {
+            transform: scale(1.02) translateY(-8px);
+            box-shadow: 0 30px 40px -15px rgba(59,130,246,0.15);
+            border-color: #b3d0ff;
+        }
+
+        .card-img {
+            height: 240px;
+            background: #e6edf5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+            font-size: 3.5rem;
+        }
+
+        .card-content {
+            padding: 2rem 1.8rem 1.8rem;
+        }
+
+        .card-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #3b82f6;
+            background: #e8f0fe;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .card-desc {
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            text-decoration: none;
+            font-weight: 600;
+            color: #0f172a;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .card-link i {
+            transition: transform 0.2s;
+        }
+        .card-link:hover {
+            border-bottom-color: #2563eb;
+            color: #2563eb;
+        }
+        .card-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* about area — modern minimal */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+        .about-text p {
+            color: #334155;
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .skill-item {
+            width: 100%;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 20px;
+        }
+        .progress-fill {
+            height: 8px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #2563eb, #6495ed);
+            width: 0%;
+        }
+
+        .fill-90 { width: 90%; }
+        .fill-85 { width: 85%; }
+        .fill-80 { width: 80%; }
+        .fill-75 { width: 75%; }
+
+        /* contact / footer */
+        .contact-section {
+            background: #ffffff;
+            border-radius: 50px 50px 0 0;
+            padding: 5rem 0;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-email {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1e293b, #2563eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            border-bottom: 3px dotted #cbd5e1;
+            padding-bottom: 6px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.8rem;
+            margin: 2rem 0;
+        }
+        .social-links a {
+            color: #334155;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #2563eb;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* responsive */
+        @media (max-width: 900px) {
+            .hero-grid, .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-cta { justify-content: center; }
+            .nav-links { display: none; } /* for simplicity keep logo & btn only */
+            .navbar .btn-outline { display: inline-block; }
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 550px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        /* dummy avatar */
+        .avatar-icon {
+            background: #a5c9ff;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: inherit;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- fixed navigation with glass -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <span class="logo">a.rden</span>
+            <div class="nav-links">
+                <a href="#">Work</a>
+                <a href="#">Studio</a>
+                <a href="#">Insights</a>
+                <a href="#">Contact</a>
+            </div>
+            <a href="#" class="btn-outline" style="padding:0.5rem 1.8rem;"><i class="far fa-paper-plane" style="margin-right:6px;"></i> Resume</a>
+        </div>
+    </nav>
+
+    <!-- hero section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="hero-badge">✦ multidisciplinary design</div>
+                <h1 class="hero-title">crafting <span>digital</span> stories with soul</h1>
+                <p class="hero-desc">I'm Arden — product designer & creative developer. I build minimal, bold experiences that live at the intersection of code and aesthetics.</p>
+                <div class="hero-cta">
+                    <a href="#" class="btn-primary">See projects <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                    <a href="#" class="card-link" style="font-weight: 500;"><i class="fa-regular fa-circle-play" style="font-size: 1.6rem;"></i> play reel</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fa-regular fa-user"></i>
+                <!-- abstract representation of modern portrait -->
+            </div>
+        </div>
+    </section>
+
+    <!-- client / collaborator strip -->
+    <div class="clients">
+        <div class="container client-grid">
+            <span class="client-item">◈ LINEAR</span>
+            <span class="client-item">◈ FRAME•IO</span>
+            <span class="client-item">◈ STRIPE</span>
+            <span class="client-item">◈ FIGMA</span>
+            <span class="client-item">◈ VERCEL</span>
+        </div>
+    </div>
+
+    <!-- featured work section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-sub">— selected projects</div>
+                <h2 class="section-title">Works that speak</h2>
+                <p style="color:#475569; margin-top: 1rem;">Minimal, bold, and human — each project is a conversation between design and purpose.</p>
+            </div>
+
+            <div class="work-grid">
+                <!-- card 1 -->
+                <div class="work-card">
+                    <div class="card-img" style="background:#dfe9f5;"><i class="fa-regular fa-object-ungroup fa-4x"></i></div>
+                    <div class="card-content">
+                        <span class="card-tag">UI / product</span>
+                        <h3 class="card-title">Nova design system</h3>
+                        <p class="card-desc">Used by 200+ product teams, built with variants and auto-layout at scale.</p>
+                        <a href="#" class="card-link">case study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- card 2 -->
+                <div class="work-card">
+                    <div class="card-img" style="background:#f0e7fe;"><i class="fa-regular fa-window-maximize fa-4x"></i></div>
+                    <div class="card-content">
+                        <span class="card-tag">web / interaction</span>
+                        <h3 class="card-title">Ethereal festival</h3>
+                        <p class="card-desc">Immersive 3D web experience with WebGL and liquid animations.</p>
+                        <a href="#" class="card-link">live demo <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- card 3 -->
+                <div class="work-card">
+                    <div class="card-img" style="background:#fee7d8;"><i class="fa-regular fa-chart-line fa-4x"></i></div>
+                    <div class="card-content">
+                        <span class="card-tag">dashboard / saas</span>
+                        <h3 class="card-title">Pulse analytics</h3>
+                        <p class="card-desc">Modular analytics dashboard with real-time data and customizable widgets.</p>
+                        <a href="#" class="card-link">preview <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- about + skills modern -->
+    <section class="section" style="background: white; border-radius: 50px 50px 0 0;">
+        <div class="container about-grid">
+            <div class="about-text">
+                <span class="section-sub" style="text-align: left;">— about me</span>
+                <h3>designer who codes, <br> dreamer who builds.</h3>
+                <p>I’ve spent the last 7 years collaborating with startups and established brands to create interfaces that feel effortless. My approach is minimalist, but never cold — rooted in typography, negative space, and motion.</p>
+                <p>Based in Jakarta, working with clients globally. I also write occasionally about design systems and creativity.</p>
+                <a href="#" class="btn-primary" style="background:white; color:#0f172a; box-shadow: none; border:1.5px solid #0f172a;">Read more <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div>
+                <div class="skill-bars">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>UI / visual design</span> <span>90%</span></div>
+                        <div class="progress-bar"><div class="progress-fill fill-90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Frontend (React, TS)</span> <span>85%</span></div>
+                        <div class="progress-bar"><div class="progress-fill fill-85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Prototyping & motion</span> <span>80%</span></div>
+                        <div class="progress-bar"><div class="progress-fill fill-80"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Design strategy</span> <span>75%</span></div>
+                        <div class="progress-bar"><div class="progress-fill fill-75"></div></div>
+                    </div>
+                </div>
+                <p style="margin-top: 2.5rem; color:#3b82f6;"><i class="fa-regular fa-circle-check"></i>  Available for freelance & collaborations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact + footer -->
+    <div class="contact-section">
+        <div class="container contact-flex">
+            <h2 class="contact-title">Have a project in mind? Let’s create something memorable.</h2>
+            <div class="contact-email">hello@arden.design</div>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
+            </div>
